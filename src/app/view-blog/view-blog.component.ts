@@ -11,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ViewBlogComponent implements OnInit {
   blogid: any;
   blogObj: any;
+  commentData: any;
 
   constructor(
     private blogService: BlogService,
@@ -23,5 +24,12 @@ export class ViewBlogComponent implements OnInit {
     this.blogService
       .getPost(this.blogid)
       .subscribe((res) => (this.blogObj = res));
+
+    this.commentService.getComments().subscribe((res) => {
+      this.commentData = res.filter(
+        (r: {postId: any}) => r.postId == this.blogid
+      );
+      // debugger;
+    });
   }
 }
