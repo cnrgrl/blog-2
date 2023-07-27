@@ -1,17 +1,20 @@
-import { Injectable } from '@angular/core';
-import { BaseService } from './base.services';
+import {Injectable} from "@angular/core";
+import {BaseService} from "./base.services";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class BlogService extends BaseService {
   constructor(private base: BaseService) {
     super(base.http);
   }
   public getPosts() {
-    return this.base.getReq('/posts');
+    return this.base.getReq("/posts");
+  }
+  public getPost(postId: any) {
+    return this.base.getReq("/posts/" + postId);
   }
   public UpdatePosts(id: any, data: any) {
-    return this.base.putReq('/posts/' + id, data);
+    return this.base.putReq("/posts/" + id, data);
   }
 }

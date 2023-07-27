@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
+import {BlogService} from "../services/blog.service";
+import {CommentService} from "../services/comment.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-view-blog',
-  templateUrl: './view-blog.component.html',
-  styleUrls: ['./view-blog.component.css']
+  selector: "app-view-blog",
+  templateUrl: "./view-blog.component.html",
+  styleUrls: ["./view-blog.component.css"],
 })
 export class ViewBlogComponent implements OnInit {
+  blogid: any;
+  blogObj: any;
 
-  constructor() { }
+  constructor(
+    private blogService: BlogService,
+    private commentService: CommentService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.blogid = this.route.snapshot.paramMap.get("blogId");
+    this.blogService
+      .getPost(this.blogid)
+      .subscribe((res) => (this.blogObj = res));
   }
-
 }
