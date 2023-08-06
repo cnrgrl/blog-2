@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mb-5" *ngIf="blogObj != null">
+    <div class="col-md-6" style="padding-left: 0px">
+      <img src="assets/images/image{{ blogObj.imageId }}.jpg" class="w-100" />
+    </div>
+    <div class="col-md-6">
+      <h2>{{ blogObj.title }}</h2>
+      <p>{{ blogObj.body }}</p>
+    </div>
+  </div>
+  <div
+    class="row mt-3"
+    style="background-color: lightgrey; padding: 20px"
+    *ngFor="let comment of commentData"
+  >
+    <div class="col-md-1">
+      <img
+        src="assets/images/profile/profile{{ comment.userId }}.jpg"
+        style="width: 30px; border-radius: 50%"
+      />
+    </div>
+    <div class="col-md-11">
+      <h3>{{ comment.name }}</h3>
+      <p>{{ comment.body }}</p>
+    </div>
+  </div>
+</div>

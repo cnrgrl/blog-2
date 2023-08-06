@@ -39,14 +39,14 @@
         </mat-card-content>
         <mat-card-actions>
           <button
-            (click)="openDialog(post, false)"
+            [routerLink]="'/view-blog/' + post.id"
             mat-raised-button
             color="accent"
           >
             Görüntüle
           </button>
           <button
-            (click)="openDialog(post, true)"
+            [routerLink]="'/update-blog/' + post.id"
             mat-raised-button
             color="primary"
           >
